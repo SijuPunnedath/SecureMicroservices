@@ -3,8 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Movies.API.Data;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MoviesAPIContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("MoviesAPIContext") ?? throw new InvalidOperationException("Connection string 'MoviesAPIContext' not found.")));
-
+    options.UseInMemoryDatabase("Movies"));
 // Add services to the container.
 
 builder.Services.AddControllers();
